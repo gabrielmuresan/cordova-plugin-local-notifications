@@ -239,7 +239,7 @@ public class Options {
      */
     public int getLedColor() {
         // Default to not showing led at all
-        int aRGB = -1;
+        int aRGB = 0x00000000;
         try{
             if (!options.has("led") || (options.get("led") instanceof String)){
                 String hex = options.optString("led", "000000");

@@ -132,12 +132,8 @@ public class Builder {
                 .setLargeIcon(options.getIconBitmap())
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
-                .setStyle(style);
-
-        int ledColor = options.getLedColor();
-        if (ledColor != -1){
-            builder.setLights(ledColor, 500, 500);
-        }
+                .setStyle(style)
+                .setLights(options.getLedColor(), 500, 500);
 
         if (sound != null) {
             builder.setSound(sound);
