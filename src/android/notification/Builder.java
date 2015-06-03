@@ -132,8 +132,7 @@ public class Builder {
                 .setLargeIcon(options.getIconBitmap())
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
-                .setStyle(style)
-                .setLights(options.getLedColor(), 500, 500);
+                .setStyle(style);
 
         int ledColor = options.getLedColor();
         if (ledColor != -1){
