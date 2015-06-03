@@ -135,6 +135,11 @@ public class Builder {
                 .setStyle(style)
                 .setLights(options.getLedColor(), 500, 500);
 
+        int ledColor = options.getLedColor();
+        if (ledColor != -1){
+            builder.setLights(ledColor, 500, 500);
+        }
+
         if (sound != null) {
             builder.setSound(sound);
         }

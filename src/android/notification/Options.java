@@ -238,11 +238,15 @@ public class Options {
      *      The notification color for LED
      */
     public int getLedColor() {
-        String hex = options.optString("led", "000000");
-        int aRGB   = Integer.parseInt(hex,16);
-
-        aRGB += 0xFF000000;
-
+        int aRGB;
+        if (options.has("led") && !(options.get("led") instanceof String)){
+            // Don't show led at all if string not given
+            aRGB = -1;
+        }else{
+            String hex = options.optString("led", "000000");
+            aRGB = Integer.parseInt(hex,16);
+            aRGB += 0xFF000000;
+        }
         return aRGB;
     }
 
