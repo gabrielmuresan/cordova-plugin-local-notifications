@@ -238,15 +238,15 @@ public class Options {
      *      The notification color for LED
      */
     public int getLedColor() {
-        int aRGB;
-        if (options.has("led") && !(options.get("led") instanceof String)){
-            // Don't show led at all if string not given
-            aRGB = -1;
-        }else{
-            String hex = options.optString("led", "000000");
-            aRGB = Integer.parseInt(hex,16);
-            aRGB += 0xFF000000;
-        }
+        // Default to not showing led at all
+        int aRGB = -1;
+        try{
+            if (!options.has("led") || (options.get("led") instanceof String)){
+                String hex = options.optString("led", "000000");
+                aRGB = Integer.parseInt(hex,16);
+                aRGB += 0xFF000000;
+            }
+        }catch(JSONException e){}
         return aRGB;
     }
 
