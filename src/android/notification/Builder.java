@@ -135,11 +135,8 @@ public class Builder {
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
                 .setStyle(style)
-                .setLights(ledColor, ledColor == 0 ? 0 : 500, ledColor == 0 ? 0 : 500);
-
-        if (sound != null) {
-            builder.setSound(sound);
-        }
+                .setLights(ledColor, ledColor == 0 ? 0 : 500, ledColor == 0 ? 0 : 500)
+                .setSound(sound);
 
         applyDeleteReceiver(builder);
         applyContentReceiver(builder);

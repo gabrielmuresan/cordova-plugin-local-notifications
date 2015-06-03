@@ -129,11 +129,13 @@ public class Options {
             return;
 
         Uri iconUri = assets.parse(options.optString("icon", "icon"));
-        Uri soundUri = assets.parseSound(options.optString("sound", null));
 
         try {
             options.put("iconUri", iconUri.toString());
-            options.put("soundUri", soundUri.toString());
+            if (!options.has("sound") || (options.get("sound") instanceof String)){
+                Uri soundUri = assets.parseSound(options.optString("sound", null));
+                options.put("soundUri", soundUri.toString());
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -255,13 +257,13 @@ public class Options {
      */
     public Uri getSoundUri() {
         Uri uri = null;
-
-        try{
-            uri = Uri.parse(options.optString("soundUri"));
-        } catch (Exception e){
-            e.printStackTrace();
+        if (options.has("soundUri")){
+            try{
+                uri = Uri.parse(options.optString("soundUri"));
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
-
         return uri;
     }
 
