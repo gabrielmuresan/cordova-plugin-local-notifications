@@ -122,6 +122,8 @@ public class Builder {
         style = new NotificationCompat.BigTextStyle()
                 .bigText(options.getText());
 
+        int ledColor = options.getLedColor();
+
         builder = new NotificationCompat.Builder(context)
                 .setDefaults(0)
                 .setContentTitle(options.getTitle())
@@ -133,7 +135,7 @@ public class Builder {
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
                 .setStyle(style)
-                .setLights(options.getLedColor(), 500, 500);
+                .setLights(ledColor, ledColor == 0 ? 0 : 500, ledColor == 0 ? 0 : 500);
 
         if (sound != null) {
             builder.setSound(sound);
